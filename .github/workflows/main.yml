@@ -16,6 +16,7 @@ jobs:
         run: |
           sudo apt-get install -y openjdk-11-jdk-headless
           sudo apt-get install -y python-is-python3
+          sudo apt-get install -y bpfcc-tools "linux-headers-$(uname -r)"
           sudo curl -Lo /usr/local/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.7.5/bazelisk-linux-amd64
           sudo chmod +x /usr/local/bin/bazel
       - name: Build everything
