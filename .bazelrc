@@ -1,0 +1,8 @@
+# flags used for debugging
+build --toolchain_resolution_debug
+# build --verbose_explanations
+# build --explain True
+build --verbose_failures
+# build --experimental_enable_docker_sandbox
+# build --experimental_docker_verbose
+build --sandbox_debug
