@@ -1,0 +1,26 @@
+
+name: CI
+
+on:
+  push:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - uses: joschi/setup-jdk@v2
+        with:
+          java-version: '11' # The OpenJDK version to make available on the path
+          architecture: 'x64' # defaults to 'x64'
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y openjdk-11-jdk-headless
+          sudo apt-get install -y python-is-python3
+          sudo curl -Lo /usr/local/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.7.5/bazelisk-linux-amd64
+          sudo chmod +x /usr/local/bin/bazel
+      - name: Build everything
+        run: make build
